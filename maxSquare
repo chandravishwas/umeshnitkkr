@@ -1,0 +1,72 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class Main
+ {
+	public static void main (String[] args)
+	 {
+	 Scanner sc = new Scanner(System.in);
+	 int T;
+	 T=sc.nextInt();
+	 
+	 while(T-- >0)
+	 { 
+	        ArrayList<Integer> SQ = new ArrayList<Integer>(); 
+	 Stack<Integer> stack = new Stack<Integer>(); 
+	 int N;
+	         N=sc.nextInt();
+	         int max=0,count=0;
+	        for(int i=0;i<N;i++)
+	            {
+	                int  sq=sc.nextInt();
+	                SQ.add(i,sq);
+	            }
+	        for(int i=0;i<N;i++)
+	            {    
+	                int j;
+	                for(j=0; j<i;j++)
+	                    if(SQ.get(i) == SQ.get(j))// list.get(i) and list.get(j)
+	                        break;
+	                if(i==j)
+	                   stack.push(SQ.get(i));
+	         
+	            }
+	        int sz=stack.size();
+	        //System.out.println(Collections.frequency(SQ,493));
+    	    //System.out.println(stack);
+	        boolean f=false; 
+       for(int i=1;i<=sz;i++)
+	         {
+	            Integer y=(Integer)stack.peek();
+	            int ip = Integer.parseInt(y.toString());
+	            int x=Collections.frequency(SQ,ip);
+	            if(x>=4)
+	            {   
+	                 f=true;
+	                 int area=ip*ip;
+	                // System.out.println(count);
+	                 
+	                // System.out.println(count);
+	                 if(max<area)
+	                 {
+	                    count=x/4;
+	                    max=area;
+	                 }
+                     stack.pop();
+	             }
+	           else
+	                stack.pop();
+	         }
+	    
+	        if(!f)
+	            System.out.println("-1");
+	        else
+	        {
+	            System.out.print(max);
+	            System.out.println(" "+count);
+	        }
+	     
+	    }
+	 
+	 }
+}
