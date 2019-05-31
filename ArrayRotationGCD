@@ -1,0 +1,60 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {   
+     public static int gcdf(int a,int b)
+     {
+         if(b==0)
+         return a;
+         else 
+            return gcdf(b,a%b);
+     }
+	public static void main (String[] args)
+	 {
+	     Scanner sc =new Scanner(System.in);
+	     int T;
+	     T=sc.nextInt();
+	     while(T-->0)
+	      {
+	          int N,D;
+	          N=sc.nextInt();
+	          D=sc.nextInt();
+	          int arr[]=new int[N];
+	           for(int i=0;i<N;i++)
+	             {
+	                 arr[i]=sc.nextInt();
+	                 
+	             }
+	                   int gcd=gcdf(N,D);
+	                   for(int i=0;i<gcd;i++)
+	                     {
+	                         int j,temp,k;
+	                         temp=arr[i];
+	                         j=i;
+	                          while(true)
+	                            {
+	                                k=j+D;
+	                                if(k>=N)
+	                                k=k-N;
+	                                 if(i==k)
+	                                 break;
+	                                 arr[j]=arr[k];
+	                                 j=k;
+	                                 
+	                            }
+	                            arr[j]=temp;
+	                     }
+	                        
+	                           for(int i=0;i<N;i++)
+	                            {
+	                              System.out.print(arr[i]);
+	                              System.out.print(" ");
+	                 
+	                            }
+	                             System.out.println("");
+	          
+	      }
+	     
+	 }
+}
