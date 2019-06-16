@@ -1,0 +1,20 @@
+Node *removeDuplicates(Node *root)
+{
+  struct Node *temp1,*temp=root;
+  while(temp->next!=NULL)
+  {
+    
+     if(temp->data==temp->next->data)
+     {
+         temp1=temp->next->next;
+         free(temp->next);
+         temp->next=temp1;
+         
+     }
+     else
+     {
+         temp=temp->next;
+     }
+  }
+  return root;
+}
